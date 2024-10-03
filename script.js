@@ -104,6 +104,23 @@ $(document).ready(function () {
 
           reader.readAsDataURL(file);
      })
+
+
+
+     let darkmode = localStorage.getItem('darkmode');
+
+     if (darkmode === 'active') {
+          $('body').addClass('darkmode');
+     }
+
+     $('#theme-switch').on('click', function () {
+          $('body').toggleClass('darkmode');
+          if ($('body').hasClass('darkmode')) {
+               localStorage.setItem('darkmode', 'active');
+          } else {
+               localStorage.setItem('darkmode', 'null');
+          }
+     })
 })
 
 

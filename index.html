@@ -11,7 +11,7 @@
 
           gtag('config', 'G-RYLFW8D4GY');
      </script>
-     <title>Split your Tilemap!</title>
+     <title>Online Tileset Splitter Tool | Split Tilesets for Game Development"</title>
      <!-- Required meta tags -->
      <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -24,14 +24,30 @@
 </head>
 
 <body>
+     <button id="theme-switch">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+               <path
+                    d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+               <path
+                    d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z" />
+          </svg>
+     </button>
+
      <div class="row justify-content-center m-0">
           <div class="col-9">
-               <h1 class="text-center mt-5 heading"><span class="gradientText">Split</span> your Tilemap</h1>
+               <h1 class="text-center mt-5 heading"><span class="gradientText">Split</span> your Tileset</h1>
                <div
                     class="fileContainer position-relative d-flex justify-content-center align-items-center w-100 mt-3 p-5">
                     <div class="btnContainer w-100 text-center d-flex justify-content-center p-0 p-md-5">
                          <label class="uploadBtn p-3" for="upload">
-                              <img src="attach_file.svg">
+                              <svg width="41" height="41" viewBox="0 0 41 41" fill="none"
+                                   xmlns="http://www.w3.org/2000/svg">
+                                   <path d="M19.6458 37.5834C17.0264 37.5834 14.8056 36.6722 12.9833 34.85C11.1611 33.0278 10.25 30.807 10.25 28.1875V10.25C10.25 8.37085 10.9191 6.76217 12.2573 5.42398C13.5955 4.08578 15.2042 3.41669 17.0833 3.41669C18.9625 3.41669 20.5712 4.08578 21.9094 5.42398C23.2476 6.76217 23.9167 8.37085 23.9167 10.25V26.4792C23.9167 27.675 23.5038 28.6858 22.6781 29.5115C21.8524 30.3372 20.8417 30.75 19.6458 30.75C18.45 30.75 17.4392 30.3372 16.6135 29.5115C15.7878 28.6858 15.375 27.675 15.375 26.4792V10.25H17.9375V26.4792C17.9375 26.9632 18.1012 27.3689 18.4286 27.6964C18.7561 28.0238 19.1618 28.1875 19.6458 28.1875C20.1299 28.1875 20.5356 28.0238 20.863 27.6964C21.1905 27.3689 21.3542 26.9632 21.3542 26.4792V10.25C21.3542 9.05419 20.9413 8.04342 20.1156 7.21773C19.2899 6.39203 18.2792 5.97919 17.0833 5.97919C15.8875 5.97919 14.8767 6.39203 14.051 7.21773C13.2253 8.04342 12.8125 9.05419 12.8125 10.25V28.1875C12.8125 30.0667 13.4816 31.6754 14.8198 33.0136C16.158 34.3518 17.7667 35.0209 19.6458 35.0209C21.525 35.0209 23.1337 34.3518 24.4719 33.0136C25.8101 31.6754 26.4792 30.0667 26.4792 28.1875V10.25H29.0417V28.1875C29.0417 30.807 28.1306 33.0278 26.3083 34.85C24.4861 36.6722 22.2653 37.5834 19.6458 37.5834Z"
+                                        class="paper-clip" />
+                              </svg>
+
                               <p class="m-0 d-flex justify-content-center align-items-center fs-3">Choose File</p>
                          </label>
                          <input type="file" id="upload" accept="image/*" class="d-none">
@@ -47,12 +63,98 @@
                          <input type="number" id="tileHeight" value="8" class="dimensionInput">
                     </div>
                     <div class="col-12 col-md-4 d-flex align-items-end">
-                         <button id="splitButton" class="w-100">Split Tilemap</button>
+                         <button id="splitButton" class="w-100">Split Tileset</button>
                     </div>
 
                </div>
+               <canvas id="canvas" class="d-none"></canvas>
 
-               <canvas id="canvas"></canvas>
+               <div class="how-to p-3 mt-3">
+                    <div class="h2">
+                         How to split the tileset?
+                    </div>
+                    <ol>
+                         <li>
+                              <b>Upload an Image:</b>
+                              <ul>
+                                   <li>Click the file input button to select an image file. Only valid image
+                                        types (e.g., .png, .jpg) are accepted.</li>
+                                   <li>If no image is selected or the file is not an image, you will be
+                                        prompted with an error message.</li>
+                              </ul>
+                         </li>
+                         <li>
+                              <b>Set Tile Dimensions:</b>
+                              <ul>
+                                   <li>Enter the desired width and height for each tile in the input fields labeled Tile
+                                        Width and Tile Height.</li>
+                              </ul>
+                         </li>
+                         <li>
+                              <b>Click "Split Image":</b>
+                              <ul>
+                                   <li>Press the button labeled "Split Image" to start the process.</li>
+                                   <li>The image is split into tiles based on the width and height you provided. The
+                                        process
+                                        divides the image into a grid of smaller images.</li>
+                              </ul>
+                         </li>
+
+
+                         <li>
+                              <b>Download the Tiles:</b>
+                              <ul>
+                                   <li>
+                                        Once the image is split, a ZIP file containing the individual tiles will be
+                                        automatically generated and downloaded to your device.
+                                   </li>
+                              </ul>
+                         </li>
+                    </ol>
+               </div>
+               <div class="row benefits gy-3">
+                    <div class="benefitCol col-12 col-md-4">
+                         <div class="benefit">
+                              <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960"
+                                   width="48px" class="icon">
+                                   <path
+                                        d="M418-340q25 25 63 23.5t55-27.5l224-336-336 224q-26 18-28.5 54.5T418-340ZM204-160q-22 0-40.5-9.5T134-198q-26-47-40-97.5T80-400q0-83 31.5-156T197-683q54-54 127-85.5T480-800q82 0 154 31t126 84.5q54 53.5 86 125T879-406q1 55-12.5 107.5T825-198q-11 19-29.5 28.5T755-160H204Z" />
+                              </svg>
+                              <h3>Fast & Efficient</h3>
+                              <p>Quickly upload, split, and download images with ease, saving you time for larger
+                                   projects.
+                              </p>
+                         </div>
+
+                    </div>
+                    <div class=" benefitCol col-12 col-md-4">
+                         <div class="benefit">
+                              <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960"
+                                   width="48px" class="icon">
+                                   <path
+                                        d="M120-510v-330h330v330H120Zm0 390v-330h330v330H120Zm390-390v-330h330v330H510Zm0 390v-330h330v330H510Z" />
+                              </svg>
+                              <h3>Flexible Tile Sizes</h3>
+                              <p>Easily set your desired tile dimensions, giving you full control over your image
+                                   splits.</p>
+                         </div>
+
+                    </div>
+                    <div class="benefitCol col-12 col-md-4">
+                         <div class="benefit">
+                              <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960"
+                                   width="48px" class="icon">
+                                   <path
+                                        d="M480-80q-140-35-230-162.5T160-522v-238l320-120 320 120v238q0 152-90 279.5T480-80Zm0-62q106-35 175.5-128.5T737-480H480v-335l-260 97v196q0 12 .5 20.5T223-480h257v338Z" />
+                              </svg>
+                              <h3>Privacy Focused</h3>
+                              <p>All images are processed locally in your browser, ensuring your files remain private
+                                   and
+                                   secure.</p>
+                         </div>
+                    </div>
+
+               </div>
           </div>
      </div>
 
@@ -71,5 +173,6 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
      <!-- My JS -->
      <script src="script.js"></script>
+</body>
 
 </html>
